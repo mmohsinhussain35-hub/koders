@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaika Faheem | Social Media Marketer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0B0F19;
+            --surface-color: #1A1F2E;
+            --text-main: #FFFFFF;
+            --text-muted: #94A3B8;
+            --accent-gradient: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);
+            --accent-solid: #EC4899;
+            --glass-bg: rgba(11, 15, 25, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; text-decoration: none; color: var(--text-main); }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-solid); }
+        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 60px;
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.15), transparent 40%);
+        }
+        .hero-content { max-width: 800px; }
+        .hero-greeting { font-size: 1.5rem; color: var(--text-muted); margin-bottom: 10px; display: block; }
+        .hero h1 { font-size: 4rem; margin-bottom: 15px; }
+        .hero h2 { font-size: 2rem; margin-bottom: 25px; font-weight: 500; color: #E2E8F0; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; max-width: 650px; }
+        
+        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; }
+        .btn {
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5); }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--glass-border);
+        }
+        .btn-outline:hover { background: var(--surface-color); transform: translateY(-3px); }
+
+        /* Achievements Banner */
+        .achievements-banner {
+            background: var(--surface-color);
+            padding: 40px 5%;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-item h3 { font-size: 2.5rem; margin-bottom: 5px; }
+        .stat-item p { color: var(--text-muted); font-weight: 500; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Sections */
+        section { padding: 100px 5%; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--surface-color);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            transition: transform 0.4s, background 0.4s;
+            text-align: center;
+        }
+        .service-card:hover { transform: translateY(-10px); background: #22293b; }
+        .service-card i { font-size: 2.5rem; color: var(--accent-solid); margin-bottom: 20px; }
+        .service-card h3 { margin-bottom: 15px; font-size: 1.5rem; }
+        .service-card p { color: var(--text-muted); }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .portfolio-card {
+            background: var(--surface-color);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .portfolio-card:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Updated Portfolio Image Styles */
+        .portfolio-img {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .portfolio-card:hover .portfolio-img img {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+        
+        .portfolio-content { padding: 30px; }
+        .stat-badge {
+            display: inline-block;
+            background: rgba(236, 72, 153, 0.1);
+            color: var(--accent-solid);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .portfolio-content h4 { font-size: 1.3rem; margin-bottom: 10px; }
+        .portfolio-content p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
+
+        /* Contact */
+        .contact-container { max-width: 600px; margin: 0 auto; }
+        .contact-form {
+            background: var(--surface-color);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: var(--bg-color);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-main);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-control:focus { border-color: var(--accent-solid); }
+        textarea.form-control { resize: vertical; min-height: 150px; }
+
+        /* Footer */
+        footer {
+            background: var(--surface-color);
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+        .social-icons { margin-bottom: 20px; }
+        .social-icons a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+        .social-icons a:hover { color: var(--accent-solid); transform: translateY(-3px); }
+        .footer-text { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero h2 { font-size: 1.5rem; }
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--surface-color);
+                width: 100%;
+                text-align: center;
+                padding: 30px 0;
+                transition: 0.3s;
+                border-bottom: 1px solid var(--glass-border);
+            }
+            .nav-links.active { left: 0; }
+            .hamburger { display: block; }
+            .btn-group { flex-direction: column; width: 100%; }
+            .btn { text-align: center; }
+            .achievements-banner { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .achievements-banner { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="logo">Malaika <span class="gradient-text">Faheem</span></a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content reveal">
+            <span class="hero-greeting">Hi, I'm</span>
+            <h1><span class="gradient-text">Malaika Faheem</span></h1>
+            <h2>Expert Social Media Marketer & Strategist</h2>
+            <p>I help ambitious brands scale their digital presence, multiply engagement, and drive high-converting traffic through data-driven social media marketing.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">Start a Campaign <i class="fas fa-arrow-right"></i></a>
+                <a href="#portfolio" class="btn btn-outline">View Case Studies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Banner -->
+    <div class="achievements-banner reveal">
+        <div class="stat-item">
+            <h3 class="gradient-text">50M+</h3>
+            <p>Organic Impressions</p>
+        </div>
+        <div class="stat-item">
+            <h3 class="gradient-text">$500k+</h3>
+            <p>Ad Spend Managed</p>
+        </div>
+        <div class="stat-item">
+            <h3 class="gradient-text">320%</h3>
+            <p>Average Client ROI</p>
+        </div>
+        <div class="stat-item">
+            <h3 class="gradient-text">150k+</h3>
+            <p>Community Growth</p>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section id="services">
+        <h2 class="section-title reveal">My <span class="gradient-text">Expertise</span></h2>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <i class="fas fa-chart-line"></i>
+                <h3>Organic Growth Strategy</h3>
+                <p>Viral content planning and community management designed to organically 10x your follower base and engagement metrics.</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fas fa-ad"></i>
+                <h3>Paid Advertising (PPC)</h3>
+                <p>Hyper-targeted Meta, TikTok, and LinkedIn ad campaigns optimized for the lowest CPA and maximum ROI.</p>
+            </div>
+            <div class="service-card reveal">
+                <i class="fas fa-pen-nib"></i>
+                <h3>Content Creation</h3>
+                <p>Eye-catching graphics, short-form video scripts, and high-converting copy that stops the scroll.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+        <h2 class="section-title reveal">Client <span class="gradient-text">Wins</span></h2>
+        <div class="portfolio-grid">
+            <!-- Case Study 1 -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=800&q=80" alt="E-Commerce Apparel Campaign">
+                </div>
+                <div class="portfolio-content">
+                    <span class="stat-badge"><i class="fas fa-arrow-up"></i> 340% ROI</span>
+                    <h4>E-Commerce Apparel Brand</h4>
+                    <p>Revamped Meta ad strategy and implemented UGC content formats, resulting in a 340% return on ad spend within 60 days.</p>
+                    <a href="#" style="color: var(--accent-solid); text-decoration: none; font-weight: bold;">Read Full Study <i class="fas fa-chevron-right" style="font-size: 0.8em;"></i></a>
+                </div>
+            </div>
+            <!-- Case Study 2 -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="SaaS Tech Dashboard">
+                </div>
+                <div class="portfolio-content">
+                    <span class="stat-badge"><i class="fas fa-arrow-up"></i> +50k Followers</span>
+                    <h4>SaaS Tech Startup</h4>
+                    <p>Executed an aggressive short-form video strategy on TikTok and Reels, generating 5M+ views and tripling lead volume.</p>
+                    <a href="#" style="color: var(--accent-solid); text-decoration: none; font-weight: bold;">Read Full Study <i class="fas fa-chevron-right" style="font-size: 0.8em;"></i></a>
+                </div>
+            </div>
+            <!-- Case Study 3 -->
+            <div class="portfolio-card reveal">
+                <div class="portfolio-img">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Local Cafe Campaign">
+                </div>
+                <div class="portfolio-content">
+                    <span class="stat-badge"><i class="fas fa-arrow-up"></i> 2.1M Reach</span>
+                    <h4>Local Cafe Franchise</h4>
+                    <p>Launched a viral organic giveaway campaign across Instagram and TikTok, driving massive local foot traffic and 2.1M total reach.</p>
+                    <a href="#" style="color: var(--accent-solid); text-decoration: none; font-weight: bold;">Read Full Study <i class="fas fa-chevron-right" style="font-size: 0.8em;"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title reveal">Ready to <span class="gradient-text">Scale?</span></h2>
+        <div class="contact-container reveal">
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Brand/Company Name">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Tell me about your marketing goals..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: 10px;">Send Proposal Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="footer-text">&copy; 2026 Malaika Faheem. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Scroll Reveal Animation
+        const reveals = document.querySelectorAll('.reveal');
+
+        function reveal() {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        // Trigger once on load
+        reveal();
+    </script>
+</body>
+</html>
